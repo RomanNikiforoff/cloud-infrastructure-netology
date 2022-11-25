@@ -1,0 +1,8 @@
+#cloud-config
+users:
+  - name: nrv
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCh6ruVhrNbeqfEbOx8Xf/pmgVrHDhasZNlBIBrJhSOlm5plZ15ubdbfwNX4CP3QRty+jDB9lwhP9ZD0VyEk2kprxOFtjA4H8uE4jjpXXAyFgONig4sE90ad4ZyYwdlVMypkigyzpfC6Grmgkf68J6biVUYTNfd/Mt+NDF7neH4mis5vACAieWB7wA5z3ZcqzhiHKHjbPE7pcrYeyq7LYWYxWuulqT2Eu84zoBhnU6eRrdTw3fJbJw71gKB1NVA6AfGMYcgdV4KOjSNIQxagTudioYqfBfQXyKoyWTQ7Fhbb85d4l1xQdzhBcex3V5h1S8KhLVAkltpbkospz0EbKgd nrv
