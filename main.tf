@@ -37,7 +37,7 @@ variable "user_password" {
 
 variable "user" {
   type    = string
-  default = "yc-user"
+  default = "nrv"
 }
 
 provider "yandex" {
