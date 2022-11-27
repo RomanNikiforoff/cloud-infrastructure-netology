@@ -1,33 +1,33 @@
 #VM Creating
 
 # Bastion host (машина с внешним IP и ssh для управления всеми остальными)
-resource "yandex_compute_instance" "gate" {
-  name                      = "gate"
-  allow_stopping_for_update = true
-  zone                      = "ru-central1-a"
-  resources {
-    cores  = 2
-    memory = 2
-  }
-
-  boot_disk {
-    initialize_params {
-      image_id = "fd8kb72eo1r5fs97a1ki"
-      size     = 15
-    }
-  }
-
-  network_interface {
-    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
-    nat       = true                   # автоматически установить динамический ip
-  }
-
-  metadata = {
-    user-data = "${file("./meta.yml")}"
-    serial-port-enable = 1
-  }
-
-}
+#resource "yandex_compute_instance" "gate" {
+#  name                      = "gate"
+#  allow_stopping_for_update = true
+#  zone                      = "ru-central1-a"
+#  resources {
+#    cores  = 2
+#    memory = 2
+#  }
+#
+#  boot_disk {
+#    initialize_params {
+#      image_id = "fd8kb72eo1r5fs97a1ki"
+#      size     = 15
+#    }
+#  }
+#
+#  network_interface {
+#    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
+#    nat       = true                   # автоматически установить динамический ip
+#  }
+#
+#  metadata = {
+#    user-data = "${file("./meta.yml")}"
+#    serial-port-enable = 1
+#  }
+#
+#}
 
 # WEB-1 NGINX-1
 resource "yandex_compute_instance" "web1" {
@@ -128,124 +128,123 @@ resource "yandex_compute_instance" "web2" {
 }
 
 # Prometheus
+#resource "yandex_compute_instance" "prom1" {
+#  name                      = "prometheus"
+#  allow_stopping_for_update = true
+#  zone                      = "ru-central1-a"
+#  resources {
+#    cores  = 2
+#    memory = 4
+#  }
+#
+#  boot_disk {
+#    initialize_params {
+#      image_id = "fd8kb72eo1r5fs97a1ki"
+#      size     = 30
+#    }
+#  }
 
-resource "yandex_compute_instance" "prom1" {
-  name                      = "prometheus"
-  allow_stopping_for_update = true
-  zone                      = "ru-central1-a"
-  resources {
-    cores  = 2
-    memory = 4
-  }
-
-  boot_disk {
-    initialize_params {
-      image_id = "fd8kb72eo1r5fs97a1ki"
-      size     = 30
-    }
-  }
-
-  network_interface {
-    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
+#  network_interface {
+#    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
     #nat = true # автоматически установить динамический ip
-  }
-
-  metadata = {
-    user-data = "${file("./meta.yml")}"
-    serial-port-enable = 1
-  }
-
-}
+#  }
+#
+#  metadata = {
+#    user-data = "${file("./meta.yml")}"
+#    serial-port-enable = 1
+#  }
+#
+#}
 
 # Grafana
 
-resource "yandex_compute_instance" "graf" {
-  name                      = "grafana"
-  allow_stopping_for_update = true
-  zone                      = "ru-central1-a"
-  resources {
-    cores  = 2
-    memory = 4
-  }
+#resource "yandex_compute_instance" "graf" {
+#  name                      = "grafana"
+#  allow_stopping_for_update = true
+#  zone                      = "ru-central1-a"
+#  resources {
+#    cores  = 2
+#    memory = 4
+#  }
+#
+#  boot_disk {
+#    initialize_params {
+#      image_id = "fd8kb72eo1r5fs97a1ki"
+#      size     = 30
+#    }
+#  }
 
-  boot_disk {
-    initialize_params {
-      image_id = "fd8kb72eo1r5fs97a1ki"
-      size     = 30
-    }
-  }
-
-  network_interface {
-    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
-    nat = true # автоматически установить динамический ip
-  }
-
-  metadata = {
-    user-data = "${file("./meta.yml")}"
-    serial-port-enable = 1
-  }
-
-}
+#  network_interface {
+#    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
+#    nat = true # автоматически установить динамический ip
+#  }
+#
+#  metadata = {
+#    user-data = "${file("./meta.yml")}"
+#    serial-port-enable = 1
+#  }
+#
+#}
 
 # Elastic\opensearch
 
-resource "yandex_compute_instance" "elk" {
-  name                      = "opensearch"
-  allow_stopping_for_update = true
-  zone                      = "ru-central1-a"
-  resources {
-    cores  = 2
-    memory = 6
-  }
+#resource "yandex_compute_instance" "elk" {
+#  name                      = "opensearch"
+#  allow_stopping_for_update = true
+#  zone                      = "ru-central1-a"
+#  resources {
+#    cores  = 2
+#    memory = 6
+#  }
 
-  boot_disk {
-    initialize_params {
-      image_id = "fd8kb72eo1r5fs97a1ki"
-      size     = 15
-    }
-  }
+#  boot_disk {
+#    initialize_params {
+#      image_id = "fd8kb72eo1r5fs97a1ki"
+#      size     = 15
+#    }
+#  }
 
-  network_interface {
-    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
+#  network_interface {
+#    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
     #nat = true # автоматически установить динамический ip
-  }
+#  }
 
-  metadata = {
-    user-data = "${file("./meta.yml")}"
-    serial-port-enable = 1
-  }
+#  metadata = {
+#    user-data = "${file("./meta.yml")}"
+#    serial-port-enable = 1
+#  }
 
-}
+#}
 
 # kibana
 
-resource "yandex_compute_instance" "kibana" {
-  name                      = "kibana"
-  allow_stopping_for_update = true
-  zone                      = "ru-central1-a"
-  resources {
-    cores  = 2
-    memory = 4
-  }
+#resource "yandex_compute_instance" "kibana" {
+#  name                      = "kibana"
+#  allow_stopping_for_update = true
+#  zone                      = "ru-central1-a"
+#  resources {
+#    cores  = 2
+#    memory = 4
+#  }
 
-  boot_disk {
-    initialize_params {
-      image_id = "fd8kb72eo1r5fs97a1ki"
-      size     = 20
-    }
-  }
+#  boot_disk {
+#    initialize_params {
+#      image_id = "fd8kb72eo1r5fs97a1ki"
+#      size     = 20
+#    }
+#  }
 
-  network_interface {
-    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
-    nat = true # автоматически установить динамический ip
-  }
+#  network_interface {
+#    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
+#    nat = true # автоматически установить динамический ip
+#  }
 
-  metadata = {
-    user-data = "${file("./meta.yml")}"
-    serial-port-enable = 1
-  }
+#  metadata = {
+#    user-data = "${file("./meta.yml")}"
+#    serial-port-enable = 1
+#  }
 
-}
+#}
 
 output "internal_ip_address_web_1" {
   value = yandex_compute_instance.web1.network_interface.0.ip_address
@@ -259,6 +258,9 @@ output "external_ip_address_web_1" {
 output "external_ip_address_web_2" {
   value = yandex_compute_instance.web2.network_interface.0.nat_ip_address
 }
-output "external_ip_address_gate" {
-  value = yandex_compute_instance.gate.network_interface.0.nat_ip_address
-}
+#output "external_ip_address_gate" {
+#  value = yandex_compute_instance.gate.network_interface.0.nat_ip_address
+#}
+#output "load_balancer_ip" {
+#  value = yandex_lb_network_load_balancer.balancer1.external_address
+#}
