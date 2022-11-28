@@ -1,11 +1,11 @@
 resource "yandex_alb_load_balancer" "alb1" {
   name        = "alb1"
-  network_id  = "enpf9jsec2ppbhjaivpm"
+  network_id  = yandex_vpc_network.net1.id
 
   allocation_policy {
     location {
       zone_id   = "ru-central1-a"
-      subnet_id = "e9bopjo60lbholcap1u2"
+      subnet_id = yandex_vpc_subnet.subnet-zone-a.id
     }
   }
 

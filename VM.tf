@@ -47,7 +47,7 @@ resource "yandex_compute_instance" "web1" {
   }
 
   network_interface {
-    subnet_id = "e9bopjo60lbholcap1u2" # одна из дефолтных подсетей
+    subnet_id = yandex_vpc_subnet.subnet-zone-a.id 
     nat = true # автоматически установить динамический ip
   }
 
@@ -97,7 +97,7 @@ resource "yandex_compute_instance" "web2" {
   }
 
   network_interface {
-    subnet_id = "b0c82gt6k72695pofe0m" # одна из дефолтных подсетей
+    subnet_id = yandex_vpc_subnet.subnet-zone-c.id
     nat = true # автоматически установить динамический ip
   }
 
