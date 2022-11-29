@@ -118,6 +118,6 @@ output "external_ip_address_web_2" {
 #output "external_ip_address_gate" {
 #  value = yandex_compute_instance.gate.network_interface.0.nat_ip_address
 #}
-#output "load_balancer_ip" {
-#  value = yandex_alb_load_balancer.alb1.network_interface.0.ip_address
-#}
+output "load_balancer_ip" {
+  value = yandex_alb_load_balancer.alb1.listener.0.endpoint.0.address
+}
